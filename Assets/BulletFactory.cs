@@ -32,11 +32,17 @@ public class BulletFactory : MonoBehaviour
                 //Customize bullet for player bullet
                 bullet.GetComponent<SpriteRenderer>().sprite = _playerBulletSprite;
                 bullet.GetComponent<BulletBehavior>().SetDirection(Vector3.up);
+                bullet.GetComponent<BulletBehavior>()._type = BulletType.PLAYERBULLET;
+
+                bullet.name = "PlayerBullet";
                 break;
             case BulletType.ENEMYBULLET:
                 //Customize bullet for enemy bullet
                 bullet.GetComponent<SpriteRenderer>().sprite = _enemyBulletSprite;
                 bullet.GetComponent<BulletBehavior>().SetDirection(Vector3.down);
+                bullet.GetComponent<BulletBehavior>()._type = BulletType.ENEMYBULLET;
+
+                bullet.name = "EnemyBullet";
                 break;
             default:
                 Debug.Log("Bullet factory doesn't recognize the type of bullet");

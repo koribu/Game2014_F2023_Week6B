@@ -103,7 +103,7 @@ public class BulletManager : MonoBehaviour
 
     public void ReturnBullet(GameObject bullet)
     {
-        bullet.SetActive(false);
+       
 
         switch(bullet.GetComponent<BulletBehavior>()._type)
         {
@@ -118,6 +118,6 @@ public class BulletManager : MonoBehaviour
                 break;
         }
 
-
+        bullet.SetActive(false);
     }
 }

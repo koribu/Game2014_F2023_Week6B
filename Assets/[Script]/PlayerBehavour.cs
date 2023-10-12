@@ -122,12 +122,16 @@ public class PlayerBehavour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("EnemyBullet"))
+        if(collision.CompareTag("Bullet"))
         {
-            _gameController.ChangeScore(-7);
-            _bulletManager.ReturnBullet(collision.gameObject);
-           // collision.gameObject.GetComponent<EnemyBehavior>().DyingSequence();
-            Debug.Log("I Got HIT!!!");
+            if(collision.GetComponent<BulletBehavior>()._type == BulletType.ENEMYBULLET)
+            {
+                _gameController.ChangeScore(-7);
+                _bulletManager.ReturnBullet(collision.gameObject);
+                // collision.gameObject.GetComponent<EnemyBehavior>().DyingSequence();
+                Debug.Log("I Got HIT!!!");
+            }
+           
         }
     }
 }
