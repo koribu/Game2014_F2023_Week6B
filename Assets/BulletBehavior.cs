@@ -13,6 +13,8 @@ public class BulletBehavior : MonoBehaviour
 
     Vector3 _direction;
 
+    public BulletType _type;
+
     BulletManager _manager;
     // Start is called before the first frame update
     void Start()

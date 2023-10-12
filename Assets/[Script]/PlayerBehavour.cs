@@ -57,7 +57,7 @@ public class PlayerBehavour : MonoBehaviour
         if(count > 10)
         {
   
-            _bulletManager.GetBullet(transform.position,Vector3.up,Color.green,Vector3.zero, "PlayerBullet");
+            _bulletManager.GetBullet(BulletType.PLAYERBULLET);
 
             count = 0;
         }

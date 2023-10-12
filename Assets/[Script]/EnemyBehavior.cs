@@ -79,7 +79,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (count > 10)
         {
-            _bulletManager.GetBullet(transform.position,Vector3.down,Color.magenta,new Vector3(0,0,180), "EnemyBullet");
+            _bulletManager.GetBullet(BulletType.ENEMYBULLET);
             
             count = 0;
         }
