@@ -33,13 +33,13 @@ public class BulletManager : MonoBehaviour
         for (int i = 0; i < _playerBulletTotal; i++)
         {
             //Create a bullet
-            GameObject bullet = _factory.CreateBullet();
+            GameObject bullet = _factory.CreateBullet(BulletType.PLAYERBULLET);
             _playerBulletPool.Enqueue(bullet);
         }
         for (int i = 0; i < _enemyBulletTotal; i++)
         {
             //Create an enemy bullet and add to enemy bullet queue
-            GameObject bullet = _factory.CreateBullet();
+            GameObject bullet = _factory.CreateBullet(BulletType.ENEMYBULLET);
             _enemyBulletPool.Enqueue(bullet);
         }
 
@@ -65,7 +65,7 @@ public class BulletManager : MonoBehaviour
                 //give player bullet
                 if(_playerBulletPool.Count <= 1)
                 {
-                    _playerBulletPool.Enqueue(_factory.CreateBullet());
+                    _playerBulletPool.Enqueue(_factory.CreateBullet(BulletType.PLAYERBULLET));
                 }
 
                 bullet = _playerBulletPool.Dequeue();
@@ -75,7 +75,7 @@ public class BulletManager : MonoBehaviour
                 //give enemy bullet
                 if(_enemyBulletPool.Count <= 1)
                 {
-                    _playerBulletPool.Enqueue(_factory.CreateBullet());
+                    _playerBulletPool.Enqueue(_factory.CreateBullet(BulletType.ENEMYBULLET));
                 }
 
                 bullet = _enemyBulletPool.Dequeue();

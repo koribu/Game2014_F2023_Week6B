@@ -29,6 +29,9 @@ public class EnemyBehavior : MonoBehaviour
     BulletManager _bulletManager;
     GameController _gameController;
 
+    [SerializeField]
+    Transform _bulletPoint;
+
     int _heath = 5;
 
     // Start is called before the first frame update
@@ -79,7 +82,8 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (count > 10)
         {
-            _bulletManager.GetBullet(BulletType.ENEMYBULLET);
+            GameObject bullet = _bulletManager.GetBullet(BulletType.ENEMYBULLET);
+            bullet.transform.position = _bulletPoint.position;
             
             count = 0;
         }

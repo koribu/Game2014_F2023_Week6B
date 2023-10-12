@@ -22,6 +22,9 @@ public class PlayerBehavour : MonoBehaviour
 
     GameObject _bullet;
 
+    [SerializeField]
+    Transform _bulletPoint;
+
     int count = 0;
 
         // Start is called before the first frame update
@@ -35,6 +38,8 @@ public class PlayerBehavour : MonoBehaviour
 
         _gameController = FindObjectOfType<GameController>();
         _bulletManager = FindObjectOfType<BulletManager>();
+
+     
     }
 
     // Update is called once per frame
@@ -57,8 +62,8 @@ public class PlayerBehavour : MonoBehaviour
         if(count > 10)
         {
   
-            _bulletManager.GetBullet(BulletType.PLAYERBULLET);
-
+           GameObject bullet = _bulletManager.GetBullet(BulletType.PLAYERBULLET);
+            bullet.transform.position = _bulletPoint.position;
             count = 0;
         }
 

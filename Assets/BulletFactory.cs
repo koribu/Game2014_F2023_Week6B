@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
+    GameObject _bulletPrefab;
+    [SerializeField]
+    Sprite _playerBulletSprite, _enemyBulletSprite;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
+
     }
 
     // Update is called once per frame
@@ -16,9 +20,29 @@ public class BulletFactory : MonoBehaviour
         
     }
 
-    public GameObject CreateBullet()
+    public GameObject CreateBullet(BulletType type)
     {
-        GameObject bullet = new GameObject();
+
+        GameObject bullet = Instantiate(_bulletPrefab);
+        bullet.SetActive(false);
+
+        switch(type)
+        {
+            case BulletType.PLAYERBULLET:
+                //Customize bullet for player bullet
+                bullet.GetComponent<SpriteRenderer>().sprite = _playerBulletSprite;
+                bullet.GetComponent<BulletBehavior>().SetDirection(Vector3.up);
+                break;
+            case BulletType.ENEMYBULLET:
+                //Customize bullet for enemy bullet
+                bullet.GetComponent<SpriteRenderer>().sprite = _enemyBulletSprite;
+                bullet.GetComponent<BulletBehavior>().SetDirection(Vector3.down);
+                break;
+            default:
+                Debug.Log("Bullet factory doesn't recognize the type of bullet");
+                    return null;
+                break;
+        }
 
         return bullet;
     }
